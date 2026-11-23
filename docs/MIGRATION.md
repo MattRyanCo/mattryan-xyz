@@ -41,11 +41,9 @@ by Miles), crawled 2026-11-23. The site had four published pages and no posts.
 ## Termageddon
 
 The policy pages load their text from Termageddon's embed script, exactly as
-on WordPress. The embed worked from `localhost` during testing. If the policy
-text doesn't appear on `mattryanco.github.io`, Termageddon may be restricting
-the embed to the registered domain; it will work again once the site is served
-from `mattryan.xyz` (see [DEPLOYMENT.md](DEPLOYMENT.md)), and the fallback
-"click here to view the policy" link always works.
+on WordPress. Verified working on `localhost` and on the published site
+(`www.ryno-net.com/mattryan-xyz/`) on 2026-11-23. If it ever stops loading,
+the fallback "click here to view the policy" link still works.
 
 ## Placeholder links worth reviewing
 
