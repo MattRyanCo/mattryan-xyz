@@ -20,8 +20,15 @@ Deployment is automatic: every push to `main` runs
    ```sh
    gh api -X POST repos/mattryanco/mattryan-xyz/pages -f build_type=workflow
    ```
-3. Push (or run the workflow from the **Actions** tab). The site appears at
-   `https://mattryanco.github.io/mattryan-xyz/`.
+3. Push (or run the workflow from the **Actions** tab).
+
+> **Done 2026-11-23.** Repo: https://github.com/MattRyanCo/mattryan-xyz.
+> Because the account's user site (`MattRyanCo.github.io`) has the custom
+> domain `www.ryno-net.com`, GitHub serves this project page at
+> **https://www.ryno-net.com/mattryan-xyz/**, and
+> `mattryanco.github.io/mattryan-xyz/` redirects there. The workflow reads
+> that URL from `configure-pages`, so nothing in the repo needs to change.
+> Giving this repo its own custom domain (below) moves it to the domain root.
 
 GitHub Pages on a free account requires the repository to be **public**.
 

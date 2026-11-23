@@ -14,8 +14,9 @@ return [
 
     // Absolute URL of the published site, no trailing slash. Used for
     // canonical links, robots.txt and sitemap.xml. The GitHub Actions
-    // workflow overrides this automatically with the real Pages URL.
-    'site_url' => 'https://mattryanco.github.io/mattryan-xyz',
+    // workflow overrides this automatically with the real Pages URL
+    // (currently https://www.ryno-net.com/mattryan-xyz — see docs/DEPLOYMENT.md).
+    'site_url' => 'https://www.ryno-net.com/mattryan-xyz',
 
     // Path prefix the site is served under. "/" for local preview or a
     // custom domain; "/<repo>/" for a GitHub project page. The workflow
