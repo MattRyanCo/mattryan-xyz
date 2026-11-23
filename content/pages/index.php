@@ -42,6 +42,6 @@ $bg = $site->asset('images/geometric-bg.jpg');
 <?php endforeach ?>
 </div>
 
-<p class="has-text-align-center hero-footer-meta has-jetbrains-mono-font-family has-contrast-2-color has-text-color has-small-font-size wp-block-paragraph" style="letter-spacing:0.12em;text-transform:uppercase">Site<span> Designed with assistance from <a href="https://bymiles.ai/">Miles</a></span></p>
+<p class="has-text-align-center hero-footer-meta has-jetbrains-mono-font-family has-contrast-2-color has-text-color has-small-font-size wp-block-paragraph" style="letter-spacing:0.12em;text-transform:uppercase">Thanks for visiting.</p>
 </div>
 </section>

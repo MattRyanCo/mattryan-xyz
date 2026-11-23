@@ -32,14 +32,16 @@ return [
     // Home page ("link tree").
     'home' => [
         'document_title' => 'MattRyan.xyz – Link Tree',
-        'heading' => 'MATTRYAN.XYZ',
-        'tagline' => 'WordPress Developer (Ret.)',
+        'heading' => 'MattRyan.xyz',
+        'tagline' => 'WordPress Developer (Ret.)<br>Direct digital index routing across systems, code, and writings.',
         'links_heading' => 'Links',
         // url may be absolute, site-relative ("friends/") or "mailto:".
         'links' => [
             ['label' => 'mattryan.co', 'url' => 'https://mattryan.co'],
-            ['label' => 'Development Projects', 'url' => 'https://github.com'],
-            ['label' => 'Social', 'url' => 'https://mastodon.social/@popryno'],
+            ['label' => 'ilovetophotographflowers.com', 'url' => 'https://ilovetophotographflowers.com'],
+            ['label' => 'COTA Directory', 'url' => 'https://directory.ascensionparkesburg.org/'],
+            ['label' => 'Selected Projects on GitHub', 'url' => 'https://github.com/mattryanco/'],
+            ['label' => 'Mastodon', 'url' => 'https://mastodon.social/@popryno'],
             ['label' => 'Contact', 'url' => 'mailto:contact@mattryan.xyz'],
         ],
     ],
