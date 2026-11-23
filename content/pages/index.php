@@ -13,6 +13,7 @@ $page->title = 'Home';
 $page->documentTitle = $site->get('home.document_title');
 $page->layout = 'landing';
 $page->description = $site->get('home.tagline');
+$page->description = $site->get('home.short_description');
 
 $bg = $site->asset('images/geometric-bg.jpg');
 ?>
@@ -30,6 +31,7 @@ $bg = $site->asset('images/geometric-bg.jpg');
 </div>
 
 <p class="has-text-align-center hero-subhead has-jetbrains-mono-font-family has-contrast-2-color has-text-color has-small-font-size wp-block-paragraph" style="margin-bottom:var(--wp--preset--spacing--40);letter-spacing:0.05em;line-height:1.6"><?= e($site->get('home.tagline')) ?></p>
+<p class="has-text-align-center hero-description has-jetbrains-mono-font-family has-contrast-2-color has-text-color has-small-font-size wp-block-paragraph" style="margin-bottom:var(--wp--preset--spacing--40);letter-spacing:0.05em;line-height:1.6"><?= e($site->get('home.short_description')) ?></p>
 </div>
 
 <hr class="wp-block-separator has-alpha-channel-opacity hero-divider has-custom-css wp-custom-css-a8ffb529">

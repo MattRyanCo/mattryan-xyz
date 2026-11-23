@@ -33,7 +33,8 @@ return [
     'home' => [
         'document_title' => 'MattRyan.xyz – Link Tree',
         'heading' => 'MattRyan.xyz',
-        'tagline' => 'WordPress Developer (Ret.)<br>Direct digital index routing across systems, code, and writings.',
+        'tagline' => 'WordPress Developer (Ret.)',
+        'short_description' => 'Direct digital index routing across systems, code, and writings.',
         'links_heading' => 'Links',
         // url may be absolute, site-relative ("friends/") or "mailto:".
         'links' => [
