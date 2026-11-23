@@ -25,9 +25,9 @@ return [
 
     // Custom domain for GitHub Pages (writes a CNAME file), e.g.
     // 'mattryan.xyz'. Leave null while using the github.io address.
-    'cname' => null,
+    'cname' => 'mattryan.xyz',
 
-    'contact_email' => 'contact@mattryan.xyz',
+    'contact_email' => 'mattt@mattryan.xyz',
 
     // Home page ("link tree").
     'home' => [
