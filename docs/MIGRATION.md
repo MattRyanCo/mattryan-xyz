@@ -10,7 +10,7 @@ by Miles), crawled 2026-11-23. The site had four published pages and no posts.
 | Home (page 9, link tree) | `content/pages/index.php`, links in `config/site.php` |
 | Theme fonts, background image | `assets/fonts/`, `assets/images/geometric-bg.jpg` |
 | Site icon (`uploads/2026/03/mr.png`) | `assets/images/favicon-*.png` |
-| Theme CSS + WordPress-generated CSS | `assets/css/`, pruned to the rules the site uses (see [STYLES.md](STYLES.md)) |
+| Theme CSS + WordPress-generated CSS | Rewritten as one stylesheet, `assets/css/style.css`, with no WordPress class names (see [STYLES.md](STYLES.md)) |
 
 ## Changed
 
@@ -18,6 +18,9 @@ by Miles), crawled 2026-11-23. The site had four published pages and no posts.
   only works behind Cloudflare. Links are now plain
   `mailto:contact@mattryan.xyz`.
 - **404 page.** New, since GitHub Pages serves `404.html` for unknown URLs.
+- **Markup and CSS.** WordPress block markup and its ~135 KB of CSS were
+  replaced by semantic HTML and one ~6 KB stylesheet. The visible result is
+  unchanged.
 
 ## Dropped
 

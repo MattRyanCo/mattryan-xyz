@@ -35,7 +35,7 @@ Edit a file, run `php build.php` again, refresh the browser.
 ├── content/pages/         One PHP file per page (sets metadata, echoes HTML)
 ├── templates/
 │   ├── layouts/           Full-page wrappers: landing.php, page.php
-│   └── partials/          head (meta, styles, favicons)
+│   └── partials/          head (meta, stylesheet, favicons)
 ├── src/                   The generator: Site, Page, Builder, helpers
 ├── assets/                Copied as-is to public/assets/ (CSS, fonts, images)
 ├── docs/                  Detailed documentation (start with ARCHITECTURE.md)
@@ -47,7 +47,7 @@ Edit a file, run `php build.php` again, refresh the browser.
 
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) — how the generator works, end to end
 - [docs/CONTENT.md](docs/CONTENT.md) — editing text and links, adding pages
-- [docs/STYLES.md](docs/STYLES.md) — the CSS files, their order, and what's safe to edit
+- [docs/STYLES.md](docs/STYLES.md) — the stylesheet, design tokens and home-page markup
 - [docs/BUILD.md](docs/BUILD.md) — build options, base paths, local preview
 - [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) — GitHub Pages setup and custom domain
 - [docs/MIGRATION.md](docs/MIGRATION.md) — what changed from the WordPress site
@@ -58,5 +58,5 @@ Edit a file, run `php build.php` again, refresh the browser.
 |------------------------------------|--------------------------------------------------|
 | Change a home-page button          | `config/site.php` → `home.links`                 |
 | Add a page                         | new file in `content/pages/` (see CONTENT.md)    |
-| Tweak styles                       | `assets/css/theme.css` (see STYLES.md)           |
+| Tweak styles                       | `assets/css/style.css` (see STYLES.md)           |
 | Use the mattryan.xyz domain        | `config/site.php` → `cname` (see DEPLOYMENT.md)  |

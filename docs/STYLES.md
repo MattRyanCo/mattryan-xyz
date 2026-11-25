@@ -1,95 +1,71 @@
 # Styles
 
-The visual design is the one Miles generated for the WordPress theme
-`mattryanxyz`. To reproduce it exactly, the CSS that WordPress printed into each
-page was extracted (on 2026-11-23, WordPress 7.1.5) and split into files.
+All styles live in one hand-written file, `assets/css/style.css` (about 6 KB),
+loaded by both layouts through `templates/partials/head.php`.
 
-## Files (`assets/css/`)
+The design is the one Miles generated for the original WordPress theme
+`mattryanxyz`. The CSS that WordPress printed into each page was replaced by
+this file, and the result was checked pixel-for-pixel against the WordPress
+version (home page at 1440/580/390/360 px wide, button hover and keyboard
+focus; 404 page at the same widths). No WordPress class names remain.
 
-| File | Origin | Edit? |
-|------|--------|-------|
-| `fonts.css` | `@font-face` rules for the self-hosted fonts | Rarely |
-| `wp/blocks.css` | Core block styles (group, heading, paragraph, separator, button(s), post title/content) | **Avoid** — treat as vendor CSS |
-| `wp/global-landing.css` | `theme.json` output for the home page: colour/font/spacing presets (`--wp--preset--*`), element styles, layout rules (`.wp-container-core-…`) | **Avoid** |
-| `wp/global-page.css` | Same, for inner pages | **Avoid** |
-| `wp/library.css` | Block-library base rules | **Avoid** |
-| `landing.css` | Home-page hero / link-tree design (card, logo symbol, orange buttons) | Yes |
-| `theme.css` | Theme-wide rules | **Yes — put new rules here** |
+## Sections of `style.css`
 
-`wp/global-*` differ only because WordPress prints rules just for the blocks a
-page uses. They're kept separate so each layout gets exactly the CSS it had on
-WordPress.
-
-## Load order
-
-The order matches the WordPress `<head>`, which matters for the cascade.
-
-| `landing` layout (home) | `page` layout (inner pages) |
-|---|---|
-| fonts.css | fonts.css |
-| wp/blocks.css | wp/blocks.css |
-| wp/global-landing.css | wp/global-page.css |
-| landing.css | |
-| wp/library.css | wp/library.css |
-| theme.css | theme.css |
-
-Lists live at the top of `templates/layouts/landing.php` and `page.php`.
+| Section | What it covers |
+|---------|----------------|
+| Fonts | `@font-face` for the self-hosted fonts in `assets/fonts/` |
+| `:root` | Design tokens (colours and font stacks) |
+| Base | Box sizing, `body`, headings, paragraphs, links |
+| Home page | `.hero` and its `.hero-*` parts: background, card, logo, title, divider, link buttons, plus breakpoints at 600, 480 and 360 px |
+| Inner pages | `.page` and `.page-title`: the centred 560px column used by the `page` layout |
 
 ## Design tokens
 
-Defined in `wp/global-*.css` as CSS custom properties. The useful ones:
-
 | Token | Value | Use |
 |-------|-------|-----|
-| `--wp--preset--color--base` | `#0B121B` | Page background |
-| `--wp--preset--color--base-2` | `#142030` | Home card background (`.hero-frame`) |
-| `--wp--preset--color--contrast` | `#FFFFFF` | Text |
-| `--wp--preset--color--contrast-2` | `#94A3B8` | Muted text (tagline, footer line) |
-| `--wp--preset--color--accent-1` | `#546E91` | Logo box, divider highlight |
-| `--wp--preset--color--accent-2` | `#2C3E55` | Card border, divider |
-| `--wp--preset--color--accent-3` | `#FF5000` | Orange link buttons |
-| `--wp--preset--color--accent-4` | `#FF6A22` | Button hover |
-| `--wp--preset--color--accent-5` | `#88A0C0` | "Links" heading |
+| `--color-bg` | `#0B121B` | Page background |
+| `--color-card` | `#142030` | Home card background |
+| `--color-text` | `#FFFFFF` | Text |
+| `--color-muted` | `#94A3B8` | Muted text (tagline, description, footer line) |
+| `--color-steel` | `#546E91` | Logo box, divider highlight |
+| `--color-line` | `#2C3E55` | Card border, divider |
+| `--color-accent` | `#FF5000` | Orange link buttons |
+| `--color-accent-hover` | `#FF6A22` | Button hover / focus border |
+| `--color-subheading` | `#88A0C0` | "Links" heading |
+| `--font-heading` | Chakra Petch | Headings |
+| `--font-body` | JetBrains Mono | Everything else |
 
-| Token | Use |
-|-------|-----|
-| `--wp--preset--font-family--chakra-petch` | Headings |
-| `--wp--preset--font-family--jetbrains-mono` | Body / UI |
-| `--wp--preset--font-size--small` … `--display` | Type scale |
-| `--wp--preset--spacing--20` … `--50` | Spacing scale |
+To change a colour site-wide, change its token.
 
-To change a colour site-wide, override the token in `theme.css`:
+## Fonts
 
-```css
-:root { --wp--preset--color--accent-3: #e64800; }
+| File | Family / weight |
+|------|-----------------|
+| `assets/fonts/chakra-petch-600.woff2` | Chakra Petch 600 ("Links" heading) |
+| `assets/fonts/chakra-petch-700.woff2` | Chakra Petch 700 (titles) |
+| `assets/fonts/jetbrains-mono.woff2` | JetBrains Mono, variable font covering 400–700 |
+
+## Home page markup
+
+```
+main.hero                 full-screen background image + overlay (::before)
+├── div.hero-grid         faint 40px grid
+└── div.hero-frame        the card
+    ├── header.hero-header
+    │   ├── div.hero-logo         icon drawn by ::before (CSS mask)
+    │   ├── h1.hero-title         size scales with the header width (cqi)
+    │   ├── p.hero-tagline
+    │   └── p.hero-description
+    ├── hr.hero-divider
+    ├── h2.hero-links-heading
+    ├── ul.hero-links > li > a.hero-button
+    └── p.hero-footer
 ```
 
-The "Use" column lists where `landing.css` uses each token; WordPress utility
-classes (below) can use them anywhere.
+## Notes
 
-## Utility classes
-
-Content markup uses WordPress utility classes that map to the tokens, e.g.
-`has-contrast-color`, `has-base-background-color`, `has-small-font-size`,
-`has-jetbrains-mono-font-family`, `has-text-align-center`. They're defined in
-`wp/global-*.css` (and `has-text-align-center` in `wp/library.css`).
-
-## Pruned to what the site uses
-
-The extracted CSS has been trimmed to the rules the current pages actually
-match. Removed: editor and admin-bar rules, the navigation block, header
-modes, WooCommerce and other block types the site doesn't use, unused
-colour/size/gradient presets and custom properties, and the scroll-reveal
-animation. The result was checked pixel-for-pixel against the original build.
-
-So only the utility classes and presets already in the templates exist. If you
-add markup that relies on another WordPress class or preset (say, a
-`has-accent-3-background-color` or a new block type), it won't be styled
-until you add a rule for it to `theme.css`. Plain tag selectors (`p`, `h2`,
-`ul`, …) were kept, so ordinary HTML content is still styled.
-
-## Simplifying later
-
-If you ever restyle the site, the cleanest path is to replace the `wp/` files
-with your own stylesheet and drop the `wp-block-*` classes from templates.
-Until then, leave `wp/` alone and override in `theme.css`.
+- Gradient colours use the legacy `rgba(r, g, b, a)` syntax on purpose.
+  Chrome interpolates gradients with modern `rgb(r g b / a)` colours in a
+  different colour space, which shifts the background by a shade.
+- Image and font URLs in `style.css` are relative (`../images/…`), so they
+  work under any base path.

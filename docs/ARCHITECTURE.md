@@ -96,15 +96,13 @@ content files and layouts also get `$page`.
 
 | File | Used by | Contents |
 |------|---------|----------|
-| `layouts/landing.php` | home | `<head>`, full-screen hero; no header. Loads `landing.css`. |
-| `layouts/page.php` | all other pages (currently 404) | `<head>`, page title, content wrapper. |
-| `partials/head.php` | both layouts | meta tags, title, canonical, stylesheets (list passed in by the layout), favicons. |
+| `layouts/landing.php` | home | `<head>`; the content file supplies the whole body (full-screen hero). |
+| `layouts/page.php` | all other pages (currently 404) | `<head>`, then `<main class="page">` with the page title and content. |
+| `partials/head.php` | both layouts | meta tags, title, canonical, `assets/css/style.css`, favicons. |
 
-The markup intentionally keeps WordPress block class names
-(`wp-block-group`, `is-layout-flex`, `wp-container-core-…`) because the CSS
-extracted from the WordPress site targets them. Classes that no CSS rule
-targets have been removed, so every class left in the templates does
-something. See [STYLES.md](STYLES.md).
+Markup uses plain semantic HTML with a few short class names (`.hero-*` on
+the home page, `.page` / `.page-title` for inner pages). See
+[STYLES.md](STYLES.md).
 
 The site ships no JavaScript.
 

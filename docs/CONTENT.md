@@ -46,10 +46,8 @@ Each file does two things:
 $page->title = 'Uses';
 $page->description = 'The tools I use.';
 ?>
-<div>
-<p class="wp-block-paragraph">Editor: …</p>
-<p class="wp-block-paragraph"><a href="<?= e($site->url()) ?>">Home</a></p>
-</div>
+<p>Editor: …</p>
+<p><a href="<?= e($site->url()) ?>">Home</a></p>
 ```
 
 All `$page` properties are listed in [ARCHITECTURE.md](ARCHITECTURE.md#page--srcpagephp).
@@ -67,14 +65,11 @@ Delete its file, remove any links to it in `config/site.php`, rebuild.
 
 ### Markup conventions
 
-The pages reuse WordPress block classes so the existing CSS applies:
-
-| Element | Class(es) |
-|---------|-----------|
-| Paragraph | `wp-block-paragraph` |
-| Content wrapper inside a page | a plain `<div>` around the body, so the layout sizes it as one block |
-| Button | `<div class="wp-block-button"><a class="wp-block-button__link wp-element-button">` |
-| Heading | `wp-block-heading` |
+Write plain HTML. The `page` layout wraps it in `<main class="page">` (a
+centred 560px column) after the `<h1>` title. The base styles in
+`assets/css/style.css` only cover what the current pages use: paragraphs have
+no margins and `h1`/`h2` use the heading font. Add rules there (for example
+spacing between paragraphs, or list styles) when a new page needs them.
 
 Always escape dynamic values with `e()` and build internal links with
 `$site->url()` / images with `$site->asset()`.
