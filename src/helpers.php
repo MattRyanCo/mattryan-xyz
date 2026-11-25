@@ -16,8 +16,8 @@ function e(?string $value): string
  * Attributes for an outbound link: opens in a new tab when the URL is
  * external (http/https to another host).
  */
-function link_attrs(string $url, bool $newTab = true): string
+function link_attrs(string $url): string
 {
     $external = (bool) preg_match('#^https?://#i', $url);
-    return $external && $newTab ? ' target="_blank" rel="noopener noreferrer"' : '';
+    return $external ? ' target="_blank" rel="noopener noreferrer"' : '';
 }

@@ -24,9 +24,6 @@ Edit a file, run `php build.php` again, refresh the browser.
 | URL                   | Source file                          | Layout    |
 |-----------------------|--------------------------------------|-----------|
 | `/`                   | `content/pages/index.php`            | `landing` |
-| `/friends/`           | `content/pages/friends.php`          | `page`    |
-| `/privacy-policy/`    | `content/pages/privacy-policy.php`   | `page`    |
-| `/terms-of-service/`  | `content/pages/terms-of-service.php` | `page`    |
 | `/404.html`           | `content/pages/404.php`              | `page`    |
 
 ## Project layout
@@ -34,13 +31,13 @@ Edit a file, run `php build.php` again, refresh the browser.
 ```
 .
 ├── build.php              CLI entry point: php build.php [--base-path=] [--site-url=] [--out=]
-├── config/site.php        Site name, URLs, home-page links, header menu
+├── config/site.php        Site name, URLs, home-page links
 ├── content/pages/         One PHP file per page (sets metadata, echoes HTML)
 ├── templates/
 │   ├── layouts/           Full-page wrappers: landing.php, page.php
-│   └── partials/          head, header (nav), scripts, termageddon embed
+│   └── partials/          head (meta, styles, favicons)
 ├── src/                   The generator: Site, Page, Builder, helpers
-├── assets/                Copied as-is to public/assets/ (CSS, JS, fonts, images)
+├── assets/                Copied as-is to public/assets/ (CSS, fonts, images)
 ├── docs/                  Detailed documentation (start with ARCHITECTURE.md)
 ├── .github/workflows/     GitHub Pages deploy workflow
 └── public/                Build output (git-ignored)
@@ -60,8 +57,6 @@ Edit a file, run `php build.php` again, refresh the browser.
 | I want to…                         | Edit                                             |
 |------------------------------------|--------------------------------------------------|
 | Change a home-page button          | `config/site.php` → `home.links`                 |
-| Change the header menu             | `config/site.php` → `nav`                        |
-| Change text on the Friends page    | `content/pages/friends.php`                      |
 | Add a page                         | new file in `content/pages/` (see CONTENT.md)    |
 | Tweak styles                       | `assets/css/theme.css` (see STYLES.md)           |
 | Use the mattryan.xyz domain        | `config/site.php` → `cname` (see DEPLOYMENT.md)  |

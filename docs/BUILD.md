@@ -16,9 +16,6 @@ Output goes to `public/` (deleted and recreated on every build):
 ```
 public/
 ├── index.html
-├── friends/index.html
-├── privacy-policy/index.html
-├── terms-of-service/index.html
 ├── 404.html
 ├── assets/…          copy of assets/
 ├── sitemap.xml

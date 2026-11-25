@@ -12,18 +12,17 @@
 $page->title = 'Home';
 $page->documentTitle = $site->get('home.document_title');
 $page->layout = 'landing';
-$page->description = $site->get('home.tagline');
 $page->description = $site->get('home.short_description');
 
 $bg = $site->asset('images/geometric-bg.jpg');
 ?>
-<section class="wp-block-group alignfull hero has-custom-css has-contrast-color has-base-background-color has-text-color has-background is-vertical is-content-justification-center is-layout-flow wp-container-core-group-is-layout-5fec0ffd wp-block-group-is-layout-flow wp-custom-css-e3d25b7b" style="min-height:100vh;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--30);background-image:url('<?= e($bg) ?>');background-position:center center;background-size:cover;">
+<section class="wp-block-group alignfull hero has-contrast-color has-base-background-color has-text-color has-background is-vertical is-content-justification-center is-layout-flow wp-container-core-group-is-layout-5fec0ffd wp-block-group-is-layout-flow" style="min-height:100vh;padding-top:var(--wp--preset--spacing--40);padding-right:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--40);padding-left:var(--wp--preset--spacing--30);background-image:url('<?= e($bg) ?>');background-position:center center;background-size:cover;">
 <div class="wp-block-group hero-grid-overlay is-layout-flow wp-container-core-group-is-layout-c982a6be wp-block-group-is-layout-flow"></div>
 
-<div class="wp-block-group hero-frame animate-on-scroll is-vertical is-layout-flex wp-container-core-group-is-layout-b260b241 wp-block-group-is-layout-flex">
+<div class="wp-block-group hero-frame is-vertical is-layout-flex wp-container-core-group-is-layout-b260b241 wp-block-group-is-layout-flex">
 <div class="wp-block-group hero-header-zone is-vertical is-layout-flex wp-container-core-group-is-layout-b260b241 wp-block-group-is-layout-flex">
-<div class="wp-block-group hero-logo-box is-content-justification-center is-nowrap is-layout-flex wp-container-core-group-is-layout-690c4046 wp-block-group-is-layout-flex">
-<div class="wp-block-group hero-logo-symbol editor-visible-icon is-layout-flow wp-container-core-group-is-layout-c982a6be wp-block-group-is-layout-flow"></div>
+<div class="wp-block-group hero-logo-box is-content-justification-center is-layout-flex wp-container-core-group-is-layout-690c4046 wp-block-group-is-layout-flex">
+<div class="wp-block-group hero-logo-symbol is-layout-flow wp-container-core-group-is-layout-c982a6be wp-block-group-is-layout-flow"></div>
 </div>
 
 <div class="wp-block-group hero-title-box is-layout-flow wp-container-core-group-is-layout-33d71ff5 wp-block-group-is-layout-flow">
@@ -31,10 +30,10 @@ $bg = $site->asset('images/geometric-bg.jpg');
 </div>
 
 <p class="has-text-align-center hero-subhead has-jetbrains-mono-font-family has-contrast-2-color has-text-color has-small-font-size wp-block-paragraph" style="margin-bottom:var(--wp--preset--spacing--40);letter-spacing:0.05em;line-height:1.6"><?= e($site->get('home.tagline')) ?></p>
-<p class="has-text-align-center hero-description has-jetbrains-mono-font-family has-contrast-2-color has-text-color has-small-font-size wp-block-paragraph" style="margin-bottom:var(--wp--preset--spacing--40);letter-spacing:0.05em;line-height:1.6"><?= e($site->get('home.short_description')) ?></p>
+<p class="has-text-align-center has-jetbrains-mono-font-family has-contrast-2-color has-text-color has-small-font-size wp-block-paragraph" style="margin-bottom:var(--wp--preset--spacing--40);letter-spacing:0.05em;line-height:1.6"><?= e($site->get('home.short_description')) ?></p>
 </div>
 
-<hr class="wp-block-separator has-alpha-channel-opacity hero-divider has-custom-css wp-custom-css-a8ffb529">
+<hr class="wp-block-separator hero-divider">
 
 <h2 class="wp-block-heading has-text-align-center hero-links-heading has-chakra-petch-font-family has-accent-5-color has-text-color has-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--40);font-weight:600;letter-spacing:0.12em;text-transform:uppercase"><?= e($site->get('home.links_heading')) ?></h2>
 

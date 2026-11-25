@@ -9,17 +9,15 @@
  * @var \MattRyan\Site\Page $page
  */
 $styles = ['css/fonts.css', 'css/wp/blocks.css', 'css/wp/global-landing.css', 'css/landing.css', 'css/wp/library.css', 'css/theme.css'];
-$localScripts = ['js/theme.js'];
 ?>
 <!DOCTYPE html>
 <html lang="<?= e($site->get('language')) ?>">
 <head>
 <?= $builder->renderTemplate('partials/head', ['page' => $page, 'styles' => $styles]) ?>
 </head>
-<body class="home page wp-custom-logo wp-embed-responsive has-solid-header-start <?= e($page->bodyClass) ?>">
+<body>
 <main class="wp-site-blocks">
 <?= $page->content ?>
 </main>
-<?= $builder->renderTemplate('partials/scripts', ['page' => $page, 'localScripts' => $localScripts]) ?>
 </body>
 </html>

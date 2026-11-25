@@ -8,53 +8,24 @@ by Miles), crawled 2026-11-23. The site had four published pages and no posts.
 | WordPress | Static site |
 |-----------|-------------|
 | Home (page 9, link tree) | `content/pages/index.php`, links in `config/site.php` |
-| Friends & Feeds (page 84) | `content/pages/friends.php` |
-| Privacy Policy (page 3) | `content/pages/privacy-policy.php` (Termageddon embed) |
-| Terms of Service (page 272) | `content/pages/terms-of-service.php` (Termageddon embed) |
 | Theme fonts, background image | `assets/fonts/`, `assets/images/geometric-bg.jpg` |
 | Site icon (`uploads/2026/03/mr.png`) | `assets/images/favicon-*.png` |
-| Custom logo (`uploads/2026/01/cropped-mrco-logo-96.webp`) | `assets/images/logo.webp` |
-| Theme CSS + WordPress-generated CSS | `assets/css/` (see [STYLES.md](STYLES.md)) |
-| Theme `script.js` | `assets/js/theme.js` |
-| Navigation block (Interactivity API) | `assets/js/navigation.js` |
-| URLs `/friends/`, `/privacy-policy/`, `/terms-of-service/` | Unchanged |
+| Theme CSS + WordPress-generated CSS | `assets/css/`, pruned to the rules the site uses (see [STYLES.md](STYLES.md)) |
 
 ## Changed
 
 - **Contact email.** Cloudflare's email obfuscation (`/cdn-cgi/l/email-protection`)
   only works behind Cloudflare. Links are now plain
   `mailto:contact@mattryan.xyz`.
-- **Mobile menu offset.** The header CSS shifted the open mobile menu 16px to
-  the left; fixed (`header.css`).
 - **404 page.** New, since GitHub Pages serves `404.html` for unknown URLs.
 
 ## Dropped
 
 | Feature | Why |
 |---------|-----|
-| Friends plugin "Follow this site" form | Needs a WordPress backend to receive requests. Replaced by a "Learn more about following" link. The page text still describes the WordPress/Friends setup; update it if that no longer applies. |
-| "Hi Friend!" / `only-friends` content | The plugin showed it only to logged-in friends; on WordPress it was visible to everyone anyway (the hiding CSS wasn't loaded). Kept as-is for fidelity. |
-| Independent Analytics | Server-side plugin. Add a static analytics snippet (e.g. Plausible, GoatCounter) to `templates/partials/scripts.php` if wanted. |
+| Friends & Feeds (page 84), Friends plugin | Not intended for the static site. The page, the header navigation menu that only it used (`header.css`, `navigation.js`), and the custom logo were removed. `/friends/` now 404s. |
+| Privacy Policy (page 3), Terms of Service (page 272) | Termageddon embeds; not intended for the static site. `/privacy-policy/` and `/terms-of-service/` now 404. |
+| Theme `script.js` (scroll-reveal animation) | The extracted CSS already forced the animated elements visible, so the script had no effect. The site now ships no JavaScript. |
+| Independent Analytics | Server-side plugin. Add a static analytics snippet (e.g. Plausible, GoatCounter) before `</body>` in `templates/layouts/*.php` if wanted. |
 | RSS feeds, REST API, oEmbed, xmlrpc, comments | No dynamic backend; the site had no posts. |
-| Speculation-rules prefetch | WordPress-specific; not needed for 5 pages. |
-
-## Termageddon
-
-The policy pages load their text from Termageddon's embed script, exactly as
-on WordPress. Verified working on `localhost` and on the published site
-(`www.ryno-net.com/mattryan-xyz/`) on 2026-11-23. If it ever stops loading,
-the fallback "click here to view the policy" link still works.
-
-## Placeholder links worth reviewing
-
-These were copied exactly from the live site, but look like Miles defaults
-rather than real destinations:
-
-| Where | Label | URL |
-|-------|-------|-----|
-| Home | Development Projects | `https://github.com` |
-| Header nav | Selected Projects | `https://github.com` |
-| Header nav | Technical Essays | `https://substack.com` |
-| Header nav | Direct Dispatch | `https://x.com` |
-
-Edit them in `config/site.php`.
+| Speculation-rules prefetch | WordPress-specific; not needed for 2 pages. |

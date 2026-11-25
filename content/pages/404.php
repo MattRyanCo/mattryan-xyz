@@ -10,7 +10,7 @@
 $page->title = 'Page not found';
 $page->inSitemap = false;
 ?>
-<div class="content-column">
+<div>
 <p class="wp-block-paragraph">Sorry, that page doesn't exist (any more). This site moved from WordPress to a static build, so some old addresses are gone.</p>
 <p class="wp-block-paragraph"><a href="<?= e($site->url()) ?>">← Back to the home page</a></p>
 </div>

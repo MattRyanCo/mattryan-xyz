@@ -66,4 +66,3 @@ https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-
 | Workflow fails at "Configure Pages" | Pages isn't enabled or not set to "GitHub Actions" (step 2 above). |
 | Workflow fails at "Lint PHP" | Syntax error in the named file. Run `php build.php` locally. |
 | Custom domain resets after deploy | `cname` not set in `config/site.php` (the build writes `CNAME`). |
-| Privacy/Terms show only the fallback link | See [MIGRATION.md](MIGRATION.md#termageddon). |

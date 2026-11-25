@@ -17,7 +17,7 @@ namespace MattRyan\Site;
  */
 final class Page
 {
-    /** Heading / short title, e.g. "Friends & Feeds". */
+    /** Heading / short title, e.g. "Page not found". */
     public string $title = '';
 
     /**
@@ -34,19 +34,13 @@ final class Page
     /** Template name in templates/layouts/ (without .php). */
     public string $layout = 'page';
 
-    /** Extra classes for <body>. */
-    public string $bodyClass = '';
-
-    /** Extra external <script src> URLs loaded at the end of <body>. */
-    public array $scripts = [];
-
     /** Whether the page is listed in sitemap.xml. */
     public bool $inSitemap = true;
 
     /** Rendered body HTML (set by the Builder). */
     public string $content = '';
 
-    /** Site-relative URL path, e.g. "" for home or "friends/". */
+    /** Site-relative URL path, e.g. "" for home or "about/". */
     public string $path {
         get => match ($this->slug) {
             'index' => '',

@@ -2,7 +2,9 @@
 
 :root {
   --font-size-base: 1rem;
-}* {
+}
+
+* {
   box-sizing: border-box;
 }
 
@@ -15,64 +17,10 @@ body {
   overflow-x: hidden;
 }
 
-@keyframes heroEntrance {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-on-scroll {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.js .animate-on-scroll:not(.is-visible) {
-  opacity: 0;
-  transform: translateY(24px);
-}
-
-.js .animate-on-scroll {
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.js .animate-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Navigation — Parent-level rules (can't scope to nav block)
-   -------------------------------------------------------------------------- */
-.wp-block-template-part:has(.wp-block-navigation .is-menu-open),
-header:has(.wp-block-navigation .is-menu-open) {
-  z-index: 100001;
-  position: relative;
-}
-
-footer.wp-block-template-part,
-footer.wp-block-template-part > .wp-block-group {
-  position: relative;
-  z-index: 1;
-}
-
-[class*="site-footer"],
-[class*="footer-section"] {
-  margin-block-start: 0 !important;
-}
-
 :where(.wp-site-blocks, .wp-block-post-content) :where(
   .wp-block-group,
-  .wp-block-cover,
-  .wp-block-columns,
-  .wp-block-column,
-  .wp-block-media-text,
   .wp-block-buttons,
   .wp-block-button,
-  .wp-block-image,
   .wp-block-heading,
   p,
   ul,
@@ -87,22 +35,3 @@ footer.wp-block-template-part > .wp-block-group {
   max-width: 100vw;
   box-sizing: border-box;
 }
-
-/* Static conversion scroll reveal visibility guard */
-.animate-on-scroll,
-.animate-from-left,
-.animate-from-right,
-.animate-scale,
-html.js .animate-on-scroll:not(.is-visible),
-.js .animate-on-scroll:not(.is-visible),
-.editor-styles-wrapper .animate-on-scroll,
-.editor-styles-wrapper .animate-from-left,
-.editor-styles-wrapper .animate-from-right,
-.editor-styles-wrapper .animate-scale {
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-/* Hide WP-style duplicate titles */
-.entry-title, .wp-site-blocks > .wp-block-post-title, main > .wp-block-post-title { display: none !important; }
-

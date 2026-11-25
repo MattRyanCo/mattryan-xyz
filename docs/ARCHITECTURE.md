@@ -13,20 +13,20 @@ php build.php
    └─ Builder::build()
         1. empty public/
         2. for each content/pages/*.php (alphabetical):
-             new Page(slug)               slug = file name ("index", "friends", …)
+             new Page(slug)               slug = file name ("index", "404", …)
              include the content file      it sets $page->title, ->layout, …
                                            and echoes its body HTML
              $page->content = captured output
         3. for each Page:
              render templates/layouts/{$page->layout}.php
-               └─ partials/head.php, partials/header.php, partials/scripts.php
+               └─ partials/head.php
              write public/{$page->outputFile}
         4. copy assets/ → public/assets/
         5. write sitemap.xml, robots.txt, .nojekyll, CNAME (if configured)
 ```
 
 Content files run first for all pages, then layouts render. A layout can
-therefore rely on everything a content file set, including `$page->scripts`.
+therefore rely on everything a content file set.
 
 ## Classes (`src/`)
 
@@ -58,12 +58,10 @@ One per content file. Public properties the content file may set:
 | `documentTitle`  | `"{title} – {site name}"` | Full `<title>`. Property hook supplies the default. |
 | `description`    | `''`                    | `<meta name="description">`. |
 | `layout`         | `'page'`                | Which `templates/layouts/*.php` wraps the page. |
-| `bodyClass`      | `''`                    | Extra classes on `<body>`. |
-| `scripts`        | `[]`                    | Extra external `<script src>` URLs (e.g. Termageddon). |
 | `inSitemap`      | `true`                  | Include in `sitemap.xml`. |
 
-Computed, read-only (property hooks): `path` (URL path, e.g. `friends/`),
-`outputFile` (e.g. `friends/index.html`), `isHome`. `slug` and `sourceFile` use
+Computed, read-only (property hooks): `path` (URL path, e.g. `about/`),
+`outputFile` (e.g. `about/index.html`), `isHome`. `slug` and `sourceFile` use
 asymmetric visibility (`public private(set)`): readable everywhere, set only by
 the constructor.
 
@@ -81,7 +79,7 @@ Runs the pipeline above. `renderTemplate($name, $vars)` is public so templates
 and content files can include partials:
 
 ```php
-<?= $builder->renderTemplate('partials/termageddon', ['policyId' => '…']) ?>
+<?= $builder->renderTemplate('partials/example', ['name' => '…']) ?>
 ```
 
 Every template and content file automatically gets `$site` and `$builder`;
@@ -99,25 +97,16 @@ content files and layouts also get `$page`.
 | File | Used by | Contents |
 |------|---------|----------|
 | `layouts/landing.php` | home | `<head>`, full-screen hero; no header. Loads `landing.css`. |
-| `layouts/page.php` | all other pages | `<head>`, skip link, site header, page title, content wrapper. Loads `header.css` and `navigation.js`. |
+| `layouts/page.php` | all other pages (currently 404) | `<head>`, page title, content wrapper. |
 | `partials/head.php` | both layouts | meta tags, title, canonical, stylesheets (list passed in by the layout), favicons. |
-| `partials/header.php` | `page` layout | site title + navigation from `config['nav']`, mobile overlay markup. |
-| `partials/scripts.php` | both layouts | local deferred scripts + `$page->scripts`. |
-| `partials/termageddon.php` | policy pages | Termageddon embed container with fallback link. |
 
 The markup intentionally keeps WordPress block class names
 (`wp-block-group`, `is-layout-flex`, `wp-container-core-…`) because the CSS
-extracted from the WordPress site targets them. See [STYLES.md](STYLES.md).
+extracted from the WordPress site targets them. Classes that no CSS rule
+targets have been removed, so every class left in the templates does
+something. See [STYLES.md](STYLES.md).
 
-## JavaScript (`assets/js/`)
-
-| File | Purpose |
-|------|---------|
-| `theme.js` | Original theme script: adds the `js` class and reveals `.animate-on-scroll` elements with IntersectionObserver. |
-| `navigation.js` | Replaces WordPress's Interactivity-API menu: opens/closes the mobile overlay, Escape to close, focus handling, `aria-expanded`. |
-
-Both are loaded with `defer`. The site is fully readable with JavaScript off
-(the mobile menu just won't open).
+The site ships no JavaScript.
 
 ## PHP 8.4 features used
 

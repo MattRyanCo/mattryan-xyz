@@ -27,8 +27,6 @@ return [
     // 'mattryan.xyz'. Leave null while using the github.io address.
     'cname' => 'mattryan.xyz',
 
-    'contact_email' => 'mattt@mattryan.xyz',
-
     // Home page ("link tree").
     'home' => [
         'document_title' => 'MattRyan.xyz – Link Tree',
@@ -36,7 +34,7 @@ return [
         'tagline' => 'WordPress Developer (Ret.)',
         'short_description' => 'Direct digital index routing across systems, code, and writings.',
         'links_heading' => 'Links',
-        // url may be absolute, site-relative ("friends/") or "mailto:".
+        // url may be absolute, site-relative ("about/") or "mailto:".
         'links' => [
             ['label' => 'mattryan.co', 'url' => 'https://mattryan.co'],
             ['label' => 'ilovetophotographflowers.com', 'url' => 'https://ilovetophotographflowers.com'],
@@ -45,14 +43,6 @@ return [
             ['label' => 'Mastodon', 'url' => 'https://mastodon.social/@popryno'],
             ['label' => 'Contact', 'url' => 'mailto:contact@mattryan.xyz'],
         ],
-    ],
-
-    // Header navigation on inner pages.
-    'nav' => [
-        ['label' => 'Selected Projects', 'url' => 'https://github.com'],
-        ['label' => 'Technical Essays', 'url' => 'https://substack.com'],
-        ['label' => 'Direct Dispatch', 'url' => 'https://x.com'],
-        ['label' => 'Contact Terminal', 'url' => 'mailto:contact@mattryan.xyz'],
     ],
 
     // Favicons (paths inside assets/).

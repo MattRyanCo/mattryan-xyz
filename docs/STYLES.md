@@ -9,13 +9,12 @@ page was extracted (on 2026-11-23, WordPress 7.1.5) and split into files.
 | File | Origin | Edit? |
 |------|--------|-------|
 | `fonts.css` | `@font-face` rules for the self-hosted fonts | Rarely |
-| `wp/blocks.css` | Core block styles (group, heading, paragraph, separator, button(s), site title/logo, post title/content, navigation) | **Avoid** — treat as vendor CSS |
+| `wp/blocks.css` | Core block styles (group, heading, paragraph, separator, button(s), post title/content) | **Avoid** — treat as vendor CSS |
 | `wp/global-landing.css` | `theme.json` output for the home page: colour/font/spacing presets (`--wp--preset--*`), element styles, layout rules (`.wp-container-core-…`) | **Avoid** |
 | `wp/global-page.css` | Same, for inner pages | **Avoid** |
-| `wp/library.css` | Block-library base rules + skip-link styles | **Avoid** |
-| `header.css` | The Miles header block (site title, nav, mobile overlay) | Yes, carefully |
+| `wp/library.css` | Block-library base rules | **Avoid** |
 | `landing.css` | Home-page hero / link-tree design (card, logo symbol, orange buttons) | Yes |
-| `theme.css` | Theme-wide rules + local fixes | **Yes — put new rules here** |
+| `theme.css` | Theme-wide rules | **Yes — put new rules here** |
 
 `wp/global-*` differ only because WordPress prints rules just for the blocks a
 page uses. They're kept separate so each layout gets exactly the CSS it had on
@@ -29,8 +28,8 @@ The order matches the WordPress `<head>`, which matters for the cascade.
 |---|---|
 | fonts.css | fonts.css |
 | wp/blocks.css | wp/blocks.css |
-| wp/global-landing.css | header.css |
-| landing.css | wp/global-page.css |
+| wp/global-landing.css | wp/global-page.css |
+| landing.css | |
 | wp/library.css | wp/library.css |
 | theme.css | theme.css |
 
@@ -57,7 +56,7 @@ Defined in `wp/global-*.css` as CSS custom properties. The useful ones:
 | `--wp--preset--font-family--chakra-petch` | Headings |
 | `--wp--preset--font-family--jetbrains-mono` | Body / UI |
 | `--wp--preset--font-size--small` … `--display` | Type scale |
-| `--wp--preset--spacing--20` … `--80` | Spacing scale |
+| `--wp--preset--spacing--20` … `--50` | Spacing scale |
 
 To change a colour site-wide, override the token in `theme.css`:
 
@@ -73,14 +72,21 @@ classes (below) can use them anywhere.
 Content markup uses WordPress utility classes that map to the tokens, e.g.
 `has-contrast-color`, `has-base-background-color`, `has-small-font-size`,
 `has-jetbrains-mono-font-family`, `has-text-align-center`. They're defined in
-`wp/global-*.css`.
+`wp/global-*.css` (and `has-text-align-center` in `wp/library.css`).
 
-## Local fixes
+## Pruned to what the site uses
 
-Changes made on top of the extracted CSS (search for "static build"):
+The extracted CSS has been trimmed to the rules the current pages actually
+match. Removed: editor and admin-bar rules, the navigation block, header
+modes, WooCommerce and other block types the site doesn't use, unused
+colour/size/gradient presets and custom properties, and the scroll-reveal
+animation. The result was checked pixel-for-pixel against the original build.
 
-- `header.css`: open mobile menu was positioned at `left: -16px`, leaving a
-  strip of page visible on the right. Now `left: 0`.
+So only the utility classes and presets already in the templates exist. If you
+add markup that relies on another WordPress class or preset (say, a
+`has-accent-3-background-color` or a new block type), it won't be styled
+until you add a rule for it to `theme.css`. Plain tag selectors (`p`, `h2`,
+`ul`, …) were kept, so ordinary HTML content is still styled.
 
 ## Simplifying later
 

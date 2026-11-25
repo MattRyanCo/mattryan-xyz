@@ -49,7 +49,7 @@ final class Site
         return $value;
     }
 
-    /** Site-relative link: url('friends/') => "/friends/" (or "/repo/friends/"). External URLs pass through. */
+    /** Site-relative link: url('about/') => "/about/" (or "/repo/about/"). External URLs pass through. */
     public function url(string $path = ''): string
     {
         if (preg_match('#^([a-z][a-z0-9+.-]*:|//|\#)#i', $path)) {

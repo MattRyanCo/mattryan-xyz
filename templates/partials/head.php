@@ -22,4 +22,3 @@
 <link rel="icon" href="<?= e($site->asset($site->get('icons.small'))) ?>" sizes="32x32">
 <link rel="icon" href="<?= e($site->asset($site->get('icons.large'))) ?>" sizes="192x192">
 <link rel="apple-touch-icon" href="<?= e($site->asset($site->get('icons.large'))) ?>">
-<script>document.documentElement.classList.add('js');</script>
