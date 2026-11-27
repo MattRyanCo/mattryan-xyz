@@ -66,7 +66,10 @@ Delete its file, remove any links to it in `config/site.php`, rebuild.
 ### Markup conventions
 
 Write plain HTML. The `page` layout wraps it in `<main class="page">` (a
-centred 560px column) after the `<h1>` title. The base styles in
+centred 560px column) after the `<h1>` title and adds the copyright footer
+(`templates/partials/footer.php`) after your content. A page that uses the
+`landing` layout writes its whole body, so it must include the footer itself:
+`<?= $builder->renderTemplate('partials/footer') ?>`. The base styles in
 `assets/css/style.css` only cover what the current pages use: paragraphs have
 no margins and `h1`/`h2` use the heading font. Add rules there (for example
 spacing between paragraphs, or list styles) when a new page needs them.

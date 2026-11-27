@@ -17,6 +17,7 @@
 <main class="page">
 <h1 class="page-title"><?= e($page->title) ?></h1>
 <?= $page->content ?>
+<?= $builder->renderTemplate('partials/footer') ?>
 </main>
 </body>
 </html>

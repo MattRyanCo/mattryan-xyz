@@ -35,7 +35,7 @@ Edit a file, run `php build.php` again, refresh the browser.
 ├── content/pages/         One PHP file per page (sets metadata, echoes HTML)
 ├── templates/
 │   ├── layouts/           Full-page wrappers: landing.php, page.php
-│   └── partials/          head (meta, stylesheet, favicons)
+│   └── partials/          head (meta, stylesheet, favicons), footer (copyright line)
 ├── src/                   The generator: Site, Page, Builder, helpers
 ├── assets/                Copied as-is to public/assets/ (CSS, fonts, images)
 ├── docs/                  Detailed documentation (start with ARCHITECTURE.md)

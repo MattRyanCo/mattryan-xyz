@@ -18,6 +18,7 @@ focus; 404 page at the same widths). No WordPress class names remain.
 | Base | Box sizing, `body`, headings, paragraphs, links |
 | Home page | `.hero` and its `.hero-*` parts: background, card, logo, title, divider, link buttons, plus breakpoints at 600, 480 and 360 px |
 | Inner pages | `.page` and `.page-title`: the centred 560px column used by the `page` layout |
+| Copyright line | `.footer`: the footer partial on every page (inside the home card, at the end of the `.page` column) |
 
 ## Design tokens
 
@@ -59,7 +60,7 @@ main.hero                 full-screen background image + overlay (::before)
     ├── hr.hero-divider
     ├── h2.hero-links-heading
     ├── ul.hero-links > li > a.hero-button
-    └── p.hero-footer
+    └── footer.footer     copyright line (templates/partials/footer.php)
 ```
 
 ## Notes

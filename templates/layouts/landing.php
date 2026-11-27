@@ -1,7 +1,9 @@
 <?php
 /**
  * Layout: "landing" — the page's content file supplies the whole <body>
- * content. Used by the home page link tree.
+ * content. Used by the home page link tree. Because the content file owns
+ * the body, it must include partials/footer itself (index.php puts it
+ * inside the card).
  *
  * @var \MattRyan\Site\Builder $builder
  * @var \MattRyan\Site\Site $site

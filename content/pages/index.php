@@ -31,6 +31,6 @@ $page->description = $site->get('home.short_description');
 <?php endforeach ?>
 </ul>
 
-<p class="hero-footer">Thanks for visiting.</p>
+<?= $builder->renderTemplate('partials/footer') ?>
 </div>
 </main>

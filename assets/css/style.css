@@ -170,8 +170,7 @@ a:focus {
 }
 
 .hero-tagline,
-.hero-description,
-.hero-footer {
+.hero-description {
   color: var(--color-muted);
   letter-spacing: 0.05em;
 }
@@ -252,13 +251,6 @@ a:focus {
   transform: translateY(-2px);
 }
 
-.hero-footer {
-  margin-top: 2rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0.6;
-}
-
 @media (max-width: 600px) {
   .hero-frame {
     max-width: none;
@@ -312,4 +304,12 @@ a:focus {
   font-size: clamp(1.75rem, 3.5vw, 2.25rem);
   letter-spacing: 0.03em;
   word-break: break-word;
+}
+
+/* Copyright line */
+
+.footer {
+  margin-top: .5rem;
+  padding-bottom: 1rem;
+  font-size: clamp(0.8rem, 0.73rem + 0.217vw, 0.9rem);
 }

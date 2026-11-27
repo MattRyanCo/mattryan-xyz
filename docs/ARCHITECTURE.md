@@ -19,7 +19,9 @@ php build.php
              $page->content = captured output
         3. for each Page:
              render templates/layouts/{$page->layout}.php
-               └─ partials/head.php
+               ├─ partials/head.php
+               └─ partials/footer.php   (page layout; landing pages
+                                         include it from their content file)
              write public/{$page->outputFile}
         4. copy assets/ → public/assets/
         5. write sitemap.xml, robots.txt, .nojekyll, CNAME (if configured)
@@ -96,9 +98,10 @@ content files and layouts also get `$page`.
 
 | File | Used by | Contents |
 |------|---------|----------|
-| `layouts/landing.php` | home | `<head>`; the content file supplies the whole body (full-screen hero). |
-| `layouts/page.php` | all other pages (currently 404) | `<head>`, then `<main class="page">` with the page title and content. |
+| `layouts/landing.php` | home | `<head>`; the content file supplies the whole body (full-screen hero), including the footer partial. |
+| `layouts/page.php` | all other pages (currently 404) | `<head>`, then `<main class="page">` with the page title, content and footer partial. |
 | `partials/head.php` | both layouts | meta tags, title, canonical, `assets/css/style.css`, favicons. |
+| `partials/footer.php` | `layouts/page.php`; `content/pages/index.php` (inside the card) | `<footer class="footer">` with the copyright line: build year and site `name` from `config/site.php`. A new `landing`-layout page must include it itself. |
 
 Markup uses plain semantic HTML with a few short class names (`.hero-*` on
 the home page, `.page` / `.page-title` for inner pages). See
